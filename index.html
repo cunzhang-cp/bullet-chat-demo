@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name=viewport
+        content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="referrer" content="no-referrer">
+    <title>弹幕播放器</title>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+        }
+
+        #mse {
+            flex: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        window.addEventListener('resize', function () { document.getElementById('mse').style.height = window.innerHeight + 'px'; });
+    </script>
+</head>
+
+<body>
+    <div id="mse"></div>
+    <script src="https://unpkg.byted-static.com/xgplayer/2.31.2/browser/index.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        let demo = [
+                "额扣龙墀苦。",
+				"对南宫、春风侍女，掉头不顾。",
+				"烽火连营家万里，漠漠黄沙吹雾。",
+				"莽关塞、白狼玄兔。",
+				"如此江山俱破碎，似输棋、局满枰无路。",
+				"弹血泪，迸如雨。",
+				"轻帆且问夔州戍。",
+				"俯江流、桑田屡改，阵图犹故。",
+				"抱此孤忠长耿耿，痛恨年华不与。",
+				"但月落、荒洲绝屿。",
+				"君与鹤山皆人杰，倘功名、到手还须做。",
+				"平滟，洗石鼓。",
+                "太白已仙去，诗骨此山藏。",
+				"胸中锦绣如屋，都乞与东皇。",
+				"碎翦杏花千树，浓抹胭脂万点，妖艳断人肠。",
+				"晓露沐春色，晴日涨风光。",
+				"孤村路，逢休暇，共徜徉。",
+				"酒旗斜处，□□一簇几红妆。",
+				"暂息江头烽火，无奈鬓边霜雪，聊复放疏狂。",
+				"倚俟玉壶竭，未肯宝鞭扬。",
+                "万里云间戍，立马剑门关。",
+				"乱山极目无际，直北是长安。",
+				"人苦百年涂炭，鬼哭三边锋镝，天道久应还。",
+				"手写留屯奏，炯炯寸心丹。",
+				"对青灯，搔白发，漏声残。",
+				"老来勋业未就，妨却一身闲。",
+				"梅岭绿阴青子，蒲间清泉白石，怪我旧盟寒。",
+				"烽火平安夜，归梦到家山。",
+                "霜日明宵水蘸空。",
+				"鸣鞘声里绣旗红。",
+				"澹烟衰草有无中。",
+				"万里中原烽火北，一尊浊酒戍楼东。",
+				"酒阑挥泪向悲风。",
+                "举杯呼月，问神京何在，淮山隐隐。",
+				"抚剑频看勋业事，惟有孤忠挺挺。",
+				"宫阙腥膻，衣冠沦没，天地凭谁整。",
+				"一枰棋坏，救时著数宜紧。",
+				"虽是幕府文书，玉关烽火，暂送平安信。",
+				"满地干戈犹未戢，毕竟中原谁定。",
+				"便欲凌空，飘然直上，拂拭山河影。",
+				"倚风长啸，夜深霜露凄冷。",
+                "淮山秋晓。",
+				"问西风几度，雁云蛩草。",
+				"铁色骢骄，金花袍窄，未觉塞垣寒早。",
+				"笳鼓声中晴色，一羽不飞边报。",
+				"君莫道，怎乾坤许大，英雄能少。",
+				"谈笑。",
+				"鸣镝处，生缚胡雏，烽火传音耗。",
+				"漠漠寒沙，荒荒残照，正空不劳深讨。",
+				"但喜欢迎马首，犹是中原遗老。",
+				"关何事，待归来细话，一尊倾倒。",
+                "江城烽火连三月。",
+				"不堪对酒江亭别。",
+				"休作断肠声。",
+				"老来无泪倾。",
+				"风高帆影疾。",
+				"目送舟痕碧。",
+				"锦字几时来。",
+				"薰风无雁回。",
+                "江城烽火连三月。",
+				"不堪对酒长亭别。",
+				"休作断肠声。",
+				"老来无泪倾。",
+				"风高帆影疾。",
+				"目送舟痕碧。",
+				"锦字几时来。",
+				"薰风无雁回。",
+                "怅浮生、俯仰迹成空，依然此江山。",
+				"对秋容如画，天长雁度，水阔鸥闲。",
+				"追游未甘老态，凭酒借红颜。",
+				"归骑斜阳外，柳老荷残。",
+				"幸对黄花时节，喜宾朋晤语，烽火平安。",
+				"仅风巾一笑，名尚满人寰。",
+				"要流芳、相期千载，肯区区、徒恋片时欢。",
+				"姑聊尔，招呼楚调，慰藉南冠。",
+                "霜天清晓。",
+				"望紫塞古垒，寒云衰草。",
+				"汗马嘶风，边鸿翻月，垅上铁衣寒早。",
+				"剑歌骑曲悲壮，尽道君恩难报。",
+				"塞垣乐，尽双锦带，山西年少。",
+				"谈笑。",
+				"刁斗静。",
+				"烽火一把，常送平安耗。",
+				"圣主忧边，威灵遐布，骄虏且宽天讨。",
+				"岁华向晚愁思，谁念玉关人老。",
+				"太平也，且欢娱，不惜金尊频倒。" 
+        ]
+
+        function create_danmu(num=600) {
+            let comments = []
+            for (let i = 0; i < num; i++) {
+                comments.push({
+                    duration: 10000+ 1000 * Math.round(Math.random() * 5),
+                    id: i + 1 + '',
+                    start: 2000 + 100 * Math.round(Math.random() * 10 + i),
+                    txt: demo[Math.floor(Math.random() * demo.length)],
+                    style: {  //弹幕自定义样式
+                        color: '#'+ Math.round(Math.random() * 0xffffff).toString(16),
+                        fontSize: '20px',
+                        // border: 'solid 1px #ff9500',
+                        // borderRadius: '50px',
+                        // padding: '5px 11px',
+                        // backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    }
+                })
+            }
+
+            let v = {
+                id: 'mse',
+                autoplay: true,
+                volume: 0.3,
+                url: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4',
+                poster: "https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg",
+                playsinline: true,
+                thumbnail: {
+                    pic_num: 44,
+                    width: 160,
+                    height: 90,
+                    col: 10,
+                    row: 10,
+                    urls: ['https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/byted-player-videos/1.0.0/xgplayer-demo-thumbnail.jpg'],
+                },
+                danmu: {
+                    comments,
+                    area: {
+                        start: 0,
+                        end: 1
+                    }
+                },
+                height: window.innerHeight,
+                width: window.innerWidth,
+                whitelist: ['']
+            }
+
+            let player = new Player(v);
+            player.emit('resourceReady', [{ name: '超清', url: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4' }, { name: '高清', url: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-480p.mp4' }, { name: '标清', url: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4' }]);
+        }
+
+        create_danmu(650)
+    </script>
+</body>
+
+</html>
